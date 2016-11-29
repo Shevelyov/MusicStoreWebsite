@@ -47,6 +47,10 @@ public class Customer implements Serializable {
     @JsonIgnore
     private Cart cart;
 
+    @OneToOne
+    @JoinColumn(name = "user_stat_id")
+    private UserStatistics userStat;
+
     public int getCustomerId() {
         return customerId;
     }
@@ -127,5 +131,11 @@ public class Customer implements Serializable {
         this.cart = cart;
     }
 
+    public UserStatistics getUserStat() {
+        return userStat;
+    }
 
+    public void setUserStat(UserStatistics userStat) {
+        this.userStat = userStat;
+    }
 }

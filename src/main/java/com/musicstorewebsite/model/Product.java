@@ -43,6 +43,10 @@ public class Product implements Serializable {
     @JsonIgnore
     private List<CartItem> cartItemList;
 
+    @ManyToOne
+    @JoinColumn(name = "user_stat_id", referencedColumnName = "user_stat_id")
+    private UserStatistics userStat;
+
     public int getProductId() {
         return productId;
     }
@@ -129,5 +133,13 @@ public class Product implements Serializable {
 
     public void setCartItemList(List<CartItem> cartItemList) {
         this.cartItemList = cartItemList;
+    }
+
+    public UserStatistics getUserStat() {
+        return userStat;
+    }
+
+    public void setUserStat(UserStatistics userStat) {
+        this.userStat = userStat;
     }
 }
