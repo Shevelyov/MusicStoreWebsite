@@ -21,7 +21,16 @@ public class UserStatisticsDaoImpl implements UserStatisticsDao{
 
     public UserStatistics getUserStatisticsByCustomerAndProduct(int customerId, int productId) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Product");
-        return null;
+        String hql = "from UserStatistics u where u.customer.customerId = :customerId and u.product.productId = :productId";
+        Query query = session.createQuery(hql)
+                .setParameter("customerId", customerId)
+                .setParameter("productId", productId);
+        return (UserStatistics)query.list().get(0);
+    }
+
+    public void saveUserStatistics(UserStatistics userStatistics) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(userStatistics);
+        session.flush();
     }
 }

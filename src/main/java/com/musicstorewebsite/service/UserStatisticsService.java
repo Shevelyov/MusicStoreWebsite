@@ -8,4 +8,6 @@ import com.musicstorewebsite.model.UserStatistics;
 public interface UserStatisticsService {
 
     UserStatistics getUserStatisticsByCustomerAndProduct(int customerId, int productId);
+
+    void saveUserStatistics(UserStatistics userStatistics);
 }

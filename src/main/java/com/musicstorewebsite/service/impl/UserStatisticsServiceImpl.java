@@ -19,4 +19,8 @@ public class UserStatisticsServiceImpl implements UserStatisticsService{
     public UserStatistics getUserStatisticsByCustomerAndProduct(int customerId, int productId) {
         return userStatisticsDao.getUserStatisticsByCustomerAndProduct(customerId, productId);
     }
+
+    public void saveUserStatistics(UserStatistics userStatistics) {
+        userStatisticsDao.saveUserStatistics(userStatistics);
+    }
 }

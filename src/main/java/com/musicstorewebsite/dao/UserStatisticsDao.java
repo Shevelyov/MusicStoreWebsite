@@ -9,4 +9,6 @@ public interface UserStatisticsDao {
 
     UserStatistics getUserStatisticsByCustomerAndProduct(int customerId, int productId);
 
+    void saveUserStatistics(UserStatistics userStatistics);
+
 }
