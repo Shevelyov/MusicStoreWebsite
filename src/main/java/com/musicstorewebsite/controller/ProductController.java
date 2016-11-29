@@ -55,8 +55,10 @@ public class ProductController {
     @RequestMapping("/viewProduct/{productId}")
     public String viewProductByCategory(@PathVariable int productId, Model model, @AuthenticationPrincipal User activeUser) throws IOException {
 
-        Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
+        String userName = activeUser != null ? activeUser.getUsername() : "guest";
+        Customer customer = customerService.getCustomerByUsername(userName);
         Product product = productService.getProductById(productId);
+
         UserStatistics userStatistics = userStatisticsService.getUserStatisticsByCustomerAndProduct(customer.getCustomerId(), productId);
         if(userStatistics == null){
             userStatistics = new UserStatistics();
@@ -69,7 +71,7 @@ public class ProductController {
             userStatistics.setClicksCount(userStatistics.getClicksCount() + 1);
         }
 
-
+        userStatisticsService.saveUserStatistics(userStatistics);
 
         model.addAttribute(product);
 

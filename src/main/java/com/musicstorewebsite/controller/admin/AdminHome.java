@@ -2,8 +2,10 @@ package com.musicstorewebsite.controller.admin;
 
 import com.musicstorewebsite.model.Customer;
 import com.musicstorewebsite.model.Product;
+import com.musicstorewebsite.model.UserStatistics;
 import com.musicstorewebsite.service.CustomerService;
 import com.musicstorewebsite.service.ProductService;
+import com.musicstorewebsite.service.UserStatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,9 @@ public class AdminHome {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    UserStatisticsService userStatisticsService;
+
     @RequestMapping
     public String adminPage() {
         return "admin";
@@ -44,5 +49,13 @@ public class AdminHome {
         model.addAttribute(customerList);
 
         return "customerManagement";
+    }
+
+    @RequestMapping("/statistics")
+    public String customerStatistics(Model model) {
+        List<UserStatistics> userStatisticsList = userStatisticsService.getAllUserStatistics();
+        model.addAttribute(userStatisticsList);
+
+        return "customerStatistics";
     }
 }

@@ -6,6 +6,8 @@ import com.musicstorewebsite.service.UserStatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by sheve on 11/29/2016.
  */
@@ -22,5 +24,9 @@ public class UserStatisticsServiceImpl implements UserStatisticsService{
 
     public void saveUserStatistics(UserStatistics userStatistics) {
         userStatisticsDao.saveUserStatistics(userStatistics);
+    }
+
+    public List<UserStatistics> getAllUserStatistics() {
+        return userStatisticsDao.getUserStatistics();
     }
 }

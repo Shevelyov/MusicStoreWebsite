@@ -36,6 +36,12 @@
 
         <p>Here you can manage customer information!</p>
 
+        <h3>
+            <a href="<c:url value="/admin/statistics" />" >Customer Statistics</a>
+        </h3>
+
+        <p>Here you can see what our customers like!</p>
+
 
         <%@include file="/WEB-INF/views/template/footer.jsp" %>
 
